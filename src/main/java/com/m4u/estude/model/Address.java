@@ -35,6 +35,8 @@ public class Address {
 
     }
 
+    //Métodos construtores
+
     public Address(Integer id, String street, String city, String state, Integer zipCode, String country, Student student) {
         this.id = id;
         this.street = street;
