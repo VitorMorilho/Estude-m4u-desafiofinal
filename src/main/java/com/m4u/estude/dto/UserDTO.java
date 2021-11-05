@@ -4,8 +4,11 @@ import com.m4u.estude.model.User;
 
 public class UserDTO {
     private String user;
+
+    public User userDto() {
+    return new User(user);
+        }
+
 }
 
-//public User userDto() {
-//    return new User(user);
-//        }
+
