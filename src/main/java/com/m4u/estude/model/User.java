@@ -10,13 +10,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "tbl_id")
-    Integer id;
+    private Integer id;
 
     @Column(name = "tbl_id_user", length = 35, nullable = false)
-    String user;
+    private String user;
 
     @Column(name = "tbl_id_password", length = 35, nullable = false)
-    String password;
+    private String password;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tbl_id_student", referencedColumnName = "tbl_id_student", nullable = false)

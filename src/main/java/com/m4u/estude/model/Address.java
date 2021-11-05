@@ -10,22 +10,22 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "tbl_id_address")
-    Integer id;
+    private Integer id;
 
     @Column(name = "tbl_id_street", length = 35, nullable = false)
-    String street;
+    private String street;
 
     @Column(name = "tbl_id_city", length = 35, nullable = false)
-    String city;
+    private String city;
 
     @Column(name = "tbl_id_sate", length = 35, nullable = false)
-    String state;
+    private String state;
 
     @Column(name = "tbl_id_zipCode", nullable = false)
-    Integer zipCode;
+    private Integer zipCode;
 
     @Column(name = "tbl_id_country", length = 35, nullable = false)
-    String country;
+    private String country;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tbl_id_student")

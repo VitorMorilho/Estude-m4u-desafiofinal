@@ -11,16 +11,16 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "tbl_id_student")
-    Integer id;
+    private Integer id;
 
     @Column(name = "tbl_id_name", length = 35, nullable = false)
-    String name;
+    private String name;
 
     @Column(name = "tbl_id_age")
-    int age;
+    private int age;
 
     @Column(name = "tbl_id_email", length = 35, nullable = false)
-    String email;
+    private String email;
 
     public Student(){
 
