@@ -26,6 +26,12 @@ public class Student {
 
     }
 
+    public Student(String name, int age, String email){
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
+
     public Student(Integer id, String name, int age, String email) {
         this.id = id;
         this.name = name;
