@@ -33,6 +33,10 @@ public class User {
         this.student = student;
     }
 
+    public User (String user){
+        this.user = user;
+    }
+
     public Integer getId() {
         return id;
     }
