@@ -37,6 +37,9 @@ public class User {
         this.user = user;
     }
 
+    public User(String user, String password) {
+    }
+
     public Integer getId() {
         return id;
     }
