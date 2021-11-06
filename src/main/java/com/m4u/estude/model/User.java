@@ -12,14 +12,14 @@ public class User {
     @Column(name = "tbl_id")
     private Integer id;
 
-    @Column(name = "tbl_id_user", length = 35, nullable = false)
+    @Column(name = "tbl_user", length = 35, nullable = false)
     private String user;
 
-    @Column(name = "tbl_id_password", length = 35, nullable = false)
+    @Column(name = "tbl_password", length = 35, nullable = false)
     private String password;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "tbl_id_student", referencedColumnName = "tbl_id_student", nullable = false)
+    @JoinColumn(name = "tbl_id_student", referencedColumnName = "tbl_id_student", nullable = true)
     private Student student;
 
     public User(){

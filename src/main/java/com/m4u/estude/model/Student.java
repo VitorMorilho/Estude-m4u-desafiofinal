@@ -1,6 +1,7 @@
 package com.m4u.estude.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Objects;
 
 
@@ -10,16 +11,17 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "tbl_id_student")
+    @Column(name = "tbl_id_student", nullable = false)
     private Integer id;
 
-    @Column(name = "tbl_id_name", length = 35, nullable = false)
+    @Column(name = "tbl_name", length = 35, nullable = false)
     private String name;
 
-    @Column(name = "tbl_id_age")
+    @Column(name = "tbl_age")
     private int age;
 
-    @Column(name = "tbl_id_email", length = 35, nullable = false)
+    @Email(message = "Email inválido")
+    @Column(name = "tbl_email", length = 35, nullable = false, unique = true)
     private String email;
 
     public Student(){

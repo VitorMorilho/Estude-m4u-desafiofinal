@@ -12,23 +12,23 @@ public class Address {
     @Column(name = "tbl_id_address")
     private Integer id;
 
-    @Column(name = "tbl_id_street", length = 35, nullable = false)
+    @Column(name = "tbl_street", length = 35, nullable = false)
     private String street;
 
-    @Column(name = "tbl_id_city", length = 35, nullable = false)
+    @Column(name = "tbl_city", length = 35, nullable = false)
     private String city;
 
-    @Column(name = "tbl_id_sate", length = 35, nullable = false)
+    @Column(name = "tbl_state", length = 35, nullable = false)
     private String state;
 
-    @Column(name = "tbl_id_zipCode", nullable = false)
+    @Column(name = "tbl_zipCode", nullable = false)
     private Integer zipCode;
 
-    @Column(name = "tbl_id_country", length = 35, nullable = false)
+    @Column(name = "tbl_country", length = 35, nullable = false)
     private String country;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "tbl_id_student")
+    @JoinColumn(name = "tbl_id_student", referencedColumnName = "tbl_id_student", nullable = true)
     private Student student;
 
     public Address(){
