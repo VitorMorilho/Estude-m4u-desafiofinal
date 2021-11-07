@@ -22,7 +22,7 @@ public class User {
     @JoinColumn(name = "tbl_id_student", referencedColumnName = "tbl_id_student", nullable = true)
     private Student student;
 
-    public User(){
+    public User(Integer id, String user, String password){
 
     }
 
