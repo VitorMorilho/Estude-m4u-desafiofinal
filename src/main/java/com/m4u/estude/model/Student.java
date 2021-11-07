@@ -1,98 +1,39 @@
 package com.m4u.estude.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "tbl_student")
 public class Student {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "tbl_id_student", nullable = false)
+    @NotEmpty(message = "The student name cannot be empty/null")
     private Integer id;
 
     @Column(name = "tbl_name", length = 35, nullable = false)
     private String name;
 
-    @Column(name = "tbl_age")
+    @Column(name = "tbl_age", nullable = false)
+    @Min(value = 6, message = "Age must be at least 6")
     private int age;
 
-    @Email(message = "Email inválido")
+    @Email
+    @NotEmpty(message = "The student email cannot be empty")
     @Column(name = "tbl_email", length = 35, nullable = false, unique = true)
     private String email;
-
-    public Student(){
-
-    }
-
-    public Student(String name, int age, String email){
-        this.name = name;
-        this.age = age;
-        this.email = email;
-    }
-
-    public Student(Integer id, String name, int age, String email) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.email = email;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return Objects.equals(id, student.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
