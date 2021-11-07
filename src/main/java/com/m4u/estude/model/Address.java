@@ -43,6 +43,15 @@ public class Address {
         this.country = country;
     }
 
+    public Address(Integer id, String street,String city,String state,Integer zipCode, String country){
+        this.id = id;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.country = country;
+    }
+
     //Métodos construtores
 
     public Address(Integer id, String street, String city, String state, Integer zipCode, String country, Student student) {
