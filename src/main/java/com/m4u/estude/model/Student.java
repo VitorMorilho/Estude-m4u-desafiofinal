@@ -32,8 +32,8 @@ public class Student {
     @Min(value = 6, message = "Age must be at least 6")
     private Integer age;
 
+    @Column(name = "tbl_email", length = 35, nullable = false, unique = true)
     @Email
     @NotEmpty(message = "The student email cannot be empty")
-    @Column(name = "tbl_email", length = 35, nullable = false, unique = true)
     private String email;
 }
