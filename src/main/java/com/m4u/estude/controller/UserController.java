@@ -1,7 +1,6 @@
 package com.m4u.estude.controller;
 
 
-import com.m4u.estude.controller.converter.UserConverter;
 import com.m4u.estude.dto.UserDTO;
 import com.m4u.estude.model.User;
 import com.m4u.estude.service.UserService;
@@ -18,9 +17,8 @@ public class UserController {
 
 
     @PostMapping
-        public ResponseEntity<User> save(@RequestBody UserDTO dto){
-            User user = userService.save(dto.userDto());
-            return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
+        public ResponseEntity<User> save(@RequestBody UserDTO userDTO){
+            return new ResponseEntity<>(userService.save(userDTO), HttpStatus.CREATED);
     }
 
     @GetMapping(path = "/{id}")
@@ -56,13 +54,3 @@ public class UserController {
 }
 
 
-//    @Autowired
-//    UserConverter userConverter;
-//
-//    @PostMapping("/users")
-//    public UserDTO store(@RequestBody UserDTO userDTO){
-//        User user = userConverter.toModel(userDTO);
-//
-//
-//        return userConverter.toDTO(userService.store(user));
-//    }

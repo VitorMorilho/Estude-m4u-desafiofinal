@@ -1,20 +1,25 @@
 package com.m4u.estude.service;
 
+import com.m4u.estude.dto.UserDTO;
 import com.m4u.estude.model.User;
 import com.m4u.estude.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
-
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
 
-    public User save(User user) {
+    public User save(UserDTO userDTO) {
+        User user = User.builder()
+                .user(userDTO.getUser())
+                .password(userDTO.getPassword())
+                .build();
         return userRepository.save(user);
     }
 

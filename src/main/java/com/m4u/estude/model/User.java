@@ -1,10 +1,13 @@
 package com.m4u.estude.model;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tbl_user")
+@Builder
 public class User {
 
     @Id
@@ -22,22 +25,13 @@ public class User {
     @JoinColumn(name = "tbl_id_student", referencedColumnName = "tbl_id_student", nullable = true)
     private Student student;
 
-    public User(Integer id, String user, String password){
+    public User( String user, String password){
 
     }
 
     public User(Integer id, String user, String password, Student student) {
-        this.id = id;
         this.user = user;
         this.password = password;
-        this.student = student;
-    }
-
-    public User (String user){
-        this.user = user;
-    }
-
-    public User(String user, String password) {
     }
 
     public Integer getId() {
