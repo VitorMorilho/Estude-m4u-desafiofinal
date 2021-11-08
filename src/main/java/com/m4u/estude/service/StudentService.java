@@ -36,5 +36,9 @@ public class StudentService {
        return studentRepository.findById(id)
                .orElseThrow(() -> new BadRequestException("Student not found!"));
     }
+
+    public List<Student> findByName(String name) {
+        return studentRepository.findByName(name);
+    }
 }
 

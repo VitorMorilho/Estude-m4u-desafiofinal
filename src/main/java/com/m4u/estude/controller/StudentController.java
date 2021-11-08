@@ -33,4 +33,9 @@ public class StudentController {
     public ResponseEntity<Student> findById(@PathVariable long id) {
         return ResponseEntity.ok(studentService.findByIdOrThrowBadRequestException(id));
     }
+
+    @GetMapping(path = "/find")
+    public ResponseEntity<List<Student>> findByName(@RequestParam(required = false) String name) {
+        return ResponseEntity.ok(studentService.findByName(name));
+    }
 }

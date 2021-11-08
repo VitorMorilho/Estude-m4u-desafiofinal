@@ -39,6 +39,9 @@ class StudentControllerTest {
 
         BDDMockito.when(studentServiceMock.findByIdOrThrowBadRequestException(ArgumentMatchers.anyLong()))
                 .thenReturn(StudentCreator.createStudent());
+
+        BDDMockito.when(studentServiceMock.findByName(ArgumentMatchers.anyString()))
+                .thenReturn(List.of(StudentCreator.createStudent()));
     }
 
     @Test
@@ -73,5 +76,16 @@ class StudentControllerTest {
 
         Assertions.assertThat(student).isNotNull();
         Assertions.assertThat(student.getId()).isEqualTo(expectedID);
+    }
+
+    @Test
+    @DisplayName("findByName returns list of students when successful")
+    void findByName_ReturnsListOfStudents_WhenSuccessful() {
+        String expectedName = StudentCreator.createStudent().getName();
+
+        List<Student> students = studentController.findByName("any_name").getBody();
+
+        Assertions.assertThat(students).isNotEmpty().hasSize(1);
+        Assertions.assertThat(students.get(0).getName()).isEqualTo(expectedName);
     }
 }

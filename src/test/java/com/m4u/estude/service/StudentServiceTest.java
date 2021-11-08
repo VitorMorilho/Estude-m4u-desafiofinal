@@ -18,6 +18,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,9 @@ class StudentServiceTest {
 
         BDDMockito.when(studentRepositoryMock.findById(ArgumentMatchers.anyLong()))
                 .thenReturn(Optional.of(StudentCreator.createStudent()));
+
+        BDDMockito.when(studentRepositoryMock.findByName(ArgumentMatchers.anyString()))
+                .thenReturn(List.of(StudentCreator.createStudent()));
     }
 
     @Test
@@ -73,5 +77,28 @@ class StudentServiceTest {
 
         Assertions.assertThat(student).isNotNull();
         Assertions.assertThat(student.getId()).isEqualTo(expectedID);
+    }
+
+    @Test
+    @DisplayName("findByName returns list of students when successful")
+    void findByName_ReturnsListOfStudents_WhenSuccessful() {
+        String expectedName = StudentCreator.createStudent().getName();
+
+        List<Student> students = studentService.findByName("any_name");
+
+        Assertions.assertThat(students).isNotEmpty().hasSize(1);
+        Assertions.assertThat(students.get(0).getName()).isEqualTo(expectedName);
+    }
+
+    @Test
+    @DisplayName("findByName returns an empty list when student is not found")
+    void findByName_ReturnsEmptyList_WhenStudentIsNotFound() {
+        BDDMockito.when(studentRepositoryMock.findByName(ArgumentMatchers.anyString()))
+                .thenReturn(Collections.emptyList());
+
+        String expectedName = StudentCreator.createStudent().getName();
+        List<Student> students = studentService.findByName("");
+
+        Assertions.assertThat(students).isNotNull().isEmpty();
     }
 }
