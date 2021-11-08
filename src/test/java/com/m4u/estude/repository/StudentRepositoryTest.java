@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import javax.validation.ConstraintViolationException;
+import java.util.List;
 
 @DataJpaTest
 @DisplayName("Tests for Students repository")
@@ -26,6 +27,21 @@ class StudentRepositoryTest {
         Assertions.assertThat(studentSaved).isNotNull();
         Assertions.assertThat(studentSaved.getId()).isNotNull();
         Assertions.assertThat(studentSaved.getName()).isEqualTo(studentSaved.getName());
+    }
+
+    @Test
+    @DisplayName("findAll returns a list of students when successful")
+    void findByName_ReturnsListOfStudents_WhenSuccessful() {
+        Student student = StudentCreator.createStudent();
+        Student studentSaved = this.studentRepository.save(student);
+
+        String name = studentSaved.getName();
+
+        List<Student> students = this.studentRepository.findAll();
+
+        Assertions.assertThat(students)
+                .isNotEmpty()
+                .contains(studentSaved);
     }
 
 //    @Test

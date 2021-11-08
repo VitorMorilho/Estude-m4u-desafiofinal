@@ -16,6 +16,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+
 @ExtendWith(SpringExtension.class)
 class StudentControllerTest {
     @InjectMocks
@@ -28,6 +30,8 @@ class StudentControllerTest {
     void setUp() {
         BDDMockito.when(studentServiceMock.save(ArgumentMatchers.any(StudentPostRequestBody.class)))
                 .thenReturn(StudentCreator.createStudent());
+        BDDMockito.when(studentServiceMock.listAllNonPageable())
+                .thenReturn(List.of(StudentCreator.createStudent()));
     }
 
     @Test
@@ -40,5 +44,19 @@ class StudentControllerTest {
         Assertions.assertThat(student)
                 .isNotNull()
                 .isEqualTo(StudentCreator.createStudent());
+    }
+
+    @Test
+    @DisplayName("FindAll returns list of students when successful")
+    void findAll_ReturnsListOfStudent_WhenSuccessful() {
+        String expectedName = StudentCreator.createStudent().getName();
+
+        List<Student> students = studentController.listAll().getBody();
+
+        Assertions.assertThat(students)
+                .isNotNull()
+                .isNotEmpty()
+                .hasSize(1);
+        Assertions.assertThat(students.get(0).getName()).isEqualTo(expectedName);
     }
 }
