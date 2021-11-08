@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import javax.validation.ConstraintViolationException;
 import java.util.List;
+import java.util.Optional;
 
 @DataJpaTest
 @DisplayName("Tests for Students repository")
@@ -57,6 +58,18 @@ class StudentRepositoryTest {
         Assertions.assertThat(studentUpdated.getName()).isEqualTo(studentSaved.getName());
     }
 
+    @Test
+    @DisplayName("Delete removes student when successful")
+    void delete_RemovesStudent_WhenSuccessful() {
+        Student student = StudentCreator.createStudent();
+        Student studentSaved = this.studentRepository.save(student);
+
+        this.studentRepository.delete(studentSaved);
+
+        Optional<Student> studentOptional = this.studentRepository.findById(studentSaved.getId());
+
+        Assertions.assertThat(studentOptional).isEmpty();
+    }
 //    @Test
 //    @DisplayName("Save throw ConstraintViolationException when name is empty")
 //    void save_throwConstraintViolationException_WhenNameIsEmpty(){

@@ -48,6 +48,8 @@ class StudentControllerTest {
                 .thenReturn(List.of(StudentCreator.createStudent()));
 
         BDDMockito.doNothing().when(studentServiceMock).update(ArgumentMatchers.any(StudentPutRequestBody.class));
+
+        BDDMockito.doNothing().when(studentServiceMock).delete(ArgumentMatchers.anyLong());
     }
 
     @Test
@@ -102,6 +104,18 @@ class StudentControllerTest {
                 .doesNotThrowAnyException();
 
         ResponseEntity<Void> entity = studentController.update(StudentPutRequestBodyCreator.createStudentPutRequestBody());
+
+        Assertions.assertThat(entity).isNotNull();
+        Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+    }
+
+    @Test
+    @DisplayName("delete student when successful")
+    void deleteStudent_WhenSuccessful() {
+        Assertions.assertThatCode(() -> studentController.delete(1))
+                .doesNotThrowAnyException();
+
+        ResponseEntity<Void> entity = studentController.delete(1);
 
         Assertions.assertThat(entity).isNotNull();
         Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);

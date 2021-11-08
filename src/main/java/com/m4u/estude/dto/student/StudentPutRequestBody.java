@@ -10,7 +10,7 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @Builder
 public class StudentPutRequestBody {
-    @NotEmpty(message = "The student id cannot be empty")
+//    @NotEmpty(message = "The student id cannot be empty")
     private Long id;
 
     @NotEmpty(message = "The student name cannot be empty/null")

@@ -20,7 +20,7 @@ import java.util.Objects;
 @Table(name = "tbl_student")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tbl_id_student", nullable = false)
     private Long id;
 

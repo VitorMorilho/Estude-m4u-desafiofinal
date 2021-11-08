@@ -45,6 +45,8 @@ class StudentServiceTest {
 
         BDDMockito.when(studentRepositoryMock.findByName(ArgumentMatchers.anyString()))
                 .thenReturn(List.of(StudentCreator.createStudent()));
+
+        BDDMockito.doNothing().when(studentRepositoryMock).delete(ArgumentMatchers.any(Student.class));
     }
 
     @Test
@@ -107,6 +109,13 @@ class StudentServiceTest {
     @DisplayName("update student when successful")
     void updateStudent_WhenSuccessful() {
         Assertions.assertThatCode(() -> studentService.update(StudentPutRequestBodyCreator.createStudentPutRequestBody()))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("delete student when successful")
+    void deleteStudent_WhenSuccessful() {
+        Assertions.assertThatCode(() -> studentService.delete(1))
                 .doesNotThrowAnyException();
     }
 }

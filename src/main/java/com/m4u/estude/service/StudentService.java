@@ -54,5 +54,9 @@ public class StudentService {
 
         studentRepository.save(student);
     }
+
+    public void delete(long id) {
+        studentRepository.delete(findByIdOrThrowBadRequestException(id));
+    }
 }
 
