@@ -22,15 +22,15 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "tbl_id_student", nullable = false)
-    @NotEmpty(message = "The student name cannot be empty/null")
-    private Integer id;
+    private Long id;
 
     @Column(name = "tbl_name", length = 35, nullable = false)
+    @NotEmpty(message = "The student name cannot be empty/null")
     private String name;
 
     @Column(name = "tbl_age", nullable = false)
     @Min(value = 6, message = "Age must be at least 6")
-    private int age;
+    private Integer age;
 
     @Email
     @NotEmpty(message = "The student email cannot be empty")
