@@ -27,9 +27,9 @@ public class Address {
     @Column(name = "tbl_country", length = 35, nullable = false)
     private String country;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "tbl_id_student", referencedColumnName = "tbl_id_student", nullable = true)
-    private Student student;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "tbl_id_student", referencedColumnName = "tbl_id_student", nullable = true)
+//    private Student student;
 
     public Address(){
 
@@ -54,15 +54,15 @@ public class Address {
 
     //Métodos construtores
 
-    public Address(Integer id, String street, String city, String state, Integer zipCode, String country, Student student) {
-        this.id = id;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.zipCode = zipCode;
-        this.country = country;
-        this.student = student;
-    }
+//    public Address(Integer id, String street, String city, String state, Integer zipCode, String country, Student student) {
+//        this.id = id;
+//        this.street = street;
+//        this.city = city;
+//        this.state = state;
+//        this.zipCode = zipCode;
+//        this.country = country;
+//        this.student = student;
+//    }
 
     public Integer getId() {
         return id;
@@ -112,13 +112,13 @@ public class Address {
         this.country = country;
     }
 
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
+//    public Student getStudent() {
+//        return student;
+//    }
+//
+//    public void setStudent(Student student) {
+//        this.student = student;
+//    }
 
     @Override
     public String toString() {
@@ -129,7 +129,7 @@ public class Address {
                 ", state='" + state + '\'' +
                 ", zipCode=" + zipCode +
                 ", country='" + country + '\'' +
-                ", student=" + student +
+//                ", student=" + student +
                 '}';
     }
 
