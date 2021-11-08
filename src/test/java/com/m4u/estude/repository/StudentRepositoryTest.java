@@ -31,11 +31,9 @@ class StudentRepositoryTest {
 
     @Test
     @DisplayName("findAll returns a list of students when successful")
-    void findByName_ReturnsListOfStudents_WhenSuccessful() {
+    void findAll_ReturnsListOfStudents_WhenSuccessful() {
         Student student = StudentCreator.createStudent();
         Student studentSaved = this.studentRepository.save(student);
-
-        String name = studentSaved.getName();
 
         List<Student> students = this.studentRepository.findAll();
 
