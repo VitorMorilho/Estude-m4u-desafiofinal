@@ -9,10 +9,11 @@ public class AddressDTO {
     private String city;
     private String state;
     private Integer zipCode;
+    private String country;
 
     public Address addressDto(){
-    return new Address(street, city, state, zipCode);
-}
+    return new Address(street, city, state, zipCode, country);
+    }
 
 }
 
