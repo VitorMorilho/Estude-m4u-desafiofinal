@@ -28,4 +28,9 @@ public class StudentController {
     public ResponseEntity<Page<Student>> find(Pageable pageable) {
         return ResponseEntity.ok(studentService.findAll(pageable));
     }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<Student> findById(@PathVariable long id) {
+        return ResponseEntity.ok(studentService.findByIdOrThrowBadRequestException(id));
+    }
 }

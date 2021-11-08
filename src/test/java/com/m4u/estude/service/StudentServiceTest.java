@@ -19,6 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(SpringExtension.class)
 class StudentServiceTest {
@@ -36,6 +37,9 @@ class StudentServiceTest {
         PageImpl<Student> studentPage = new PageImpl<>(List.of(StudentCreator.createStudent()));
         BDDMockito.when(studentRepositoryMock.findAll(ArgumentMatchers.any(PageRequest.class)))
                 .thenReturn(studentPage);
+
+        BDDMockito.when(studentRepositoryMock.findById(ArgumentMatchers.anyLong()))
+                .thenReturn(Optional.of(StudentCreator.createStudent()));
     }
 
     @Test
@@ -58,5 +62,16 @@ class StudentServiceTest {
         Assertions.assertThat(studentPage).isNotNull();
         Assertions.assertThat(studentPage.toList()).isNotEmpty().hasSize(1);
         Assertions.assertThat(studentPage.toList().get(0).getName()).isEqualTo(expectedName);
+    }
+
+    @Test
+    @DisplayName("findByIdOrThrowBadRequestException return student when successful")
+    void findByIdOrThrowBadRequestException_ReturnStudent_WhenSuccessful() {
+        Long expectedID = StudentCreator.createStudent().getId();
+
+        Student student = studentService.findByIdOrThrowBadRequestException(1);
+
+        Assertions.assertThat(student).isNotNull();
+        Assertions.assertThat(student.getId()).isEqualTo(expectedID);
     }
 }

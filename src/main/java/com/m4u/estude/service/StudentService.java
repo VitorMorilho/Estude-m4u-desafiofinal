@@ -1,6 +1,7 @@
 package com.m4u.estude.service;
 
 import com.m4u.estude.dto.student.StudentPostRequestBody;
+import com.m4u.estude.exception.badRequest.BadRequestException;
 import com.m4u.estude.model.Student;
 import com.m4u.estude.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,11 @@ public class StudentService {
 
     public Page<Student> findAll(Pageable pageable) {
         return studentRepository.findAll(pageable);
+    }
+
+    public Student findByIdOrThrowBadRequestException(long id) {
+       return studentRepository.findById(id)
+               .orElseThrow(() -> new BadRequestException("Student not found!"));
     }
 }
 

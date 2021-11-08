@@ -36,6 +36,9 @@ class StudentControllerTest {
         PageImpl<Student> studentPage = new PageImpl<>(List.of(StudentCreator.createStudent()));
         BDDMockito.when(studentServiceMock.findAll(ArgumentMatchers.any()))
                 .thenReturn(studentPage);
+
+        BDDMockito.when(studentServiceMock.findByIdOrThrowBadRequestException(ArgumentMatchers.anyLong()))
+                .thenReturn(StudentCreator.createStudent());
     }
 
     @Test
@@ -59,5 +62,16 @@ class StudentControllerTest {
         Assertions.assertThat(studentPage).isNotNull();
         Assertions.assertThat(studentPage.toList()).isNotEmpty().hasSize(1);
         Assertions.assertThat(studentPage.toList().get(0).getName()).isEqualTo(expectedName);
+    }
+
+    @Test
+    @DisplayName("findById return student when successful")
+    void findById_ReturnStudent_WhenSuccessful() {
+        Long expectedID = StudentCreator.createStudent().getId();
+
+        Student student = studentController.findById(1).getBody();
+
+        Assertions.assertThat(student).isNotNull();
+        Assertions.assertThat(student.getId()).isEqualTo(expectedID);
     }
 }
