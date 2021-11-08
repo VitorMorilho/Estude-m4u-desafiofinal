@@ -29,19 +29,6 @@ class StudentRepositoryTest {
         Assertions.assertThat(studentSaved.getName()).isEqualTo(studentSaved.getName());
     }
 
-    @Test
-    @DisplayName("findAll returns a list of students when successful")
-    void findAll_ReturnsListOfStudents_WhenSuccessful() {
-        Student student = StudentCreator.createStudent();
-        Student studentSaved = this.studentRepository.save(student);
-
-        List<Student> students = this.studentRepository.findAll();
-
-        Assertions.assertThat(students)
-                .isNotEmpty()
-                .contains(studentSaved);
-    }
-
 //    @Test
 //    @DisplayName("Save throw ConstraintViolationException when name is empty")
 //    void save_throwConstraintViolationException_WhenNameIsEmpty(){

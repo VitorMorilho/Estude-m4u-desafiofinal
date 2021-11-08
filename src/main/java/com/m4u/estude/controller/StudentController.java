@@ -4,6 +4,8 @@ import com.m4u.estude.dto.student.StudentPostRequestBody;
 import com.m4u.estude.model.Student;
 import com.m4u.estude.service.StudentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +25,7 @@ public class StudentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Student>> listAll() {
-        return ResponseEntity.ok(studentService.listAllNonPageable());
+    public ResponseEntity<Page<Student>> find(Pageable pageable) {
+        return ResponseEntity.ok(studentService.findAll(pageable));
     }
 }

@@ -13,6 +13,9 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
@@ -30,8 +33,9 @@ class StudentServiceTest {
         BDDMockito.when(studentRepositoryMock.save(ArgumentMatchers.any(Student.class)))
                 .thenReturn(StudentCreator.createStudent());
 
-        BDDMockito.when(studentRepositoryMock.findAll())
-                .thenReturn(List.of(StudentCreator.createStudent()));
+        PageImpl<Student> studentPage = new PageImpl<>(List.of(StudentCreator.createStudent()));
+        BDDMockito.when(studentRepositoryMock.findAll(ArgumentMatchers.any(PageRequest.class)))
+                .thenReturn(studentPage);
     }
 
     @Test
@@ -46,16 +50,13 @@ class StudentServiceTest {
     }
 
     @Test
-    @DisplayName("findAllNonPageable returns list of students when successful")
-    void findAll_ReturnsListOfStudent_WhenSuccessful() {
+    @DisplayName("FindAll returns list of students inside page object when successful")
+    void findAll_ReturnsListOfStudentInsidePageObject_WhenSuccessful() {
         String expectedName = StudentCreator.createStudent().getName();
+        Page<Student> studentPage = studentService.findAll(PageRequest.of(1,1));
 
-        List<Student> students = studentService.listAllNonPageable();
-
-        Assertions.assertThat(students)
-                .isNotNull()
-                .isNotEmpty()
-                .hasSize(1);
-        Assertions.assertThat(students.get(0).getName()).isEqualTo(expectedName);
+        Assertions.assertThat(studentPage).isNotNull();
+        Assertions.assertThat(studentPage.toList()).isNotEmpty().hasSize(1);
+        Assertions.assertThat(studentPage.toList().get(0).getName()).isEqualTo(expectedName);
     }
 }
