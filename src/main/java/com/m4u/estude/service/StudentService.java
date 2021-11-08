@@ -33,6 +33,8 @@ public class StudentService {
         return studentRepository.findAll(pageable);
     }
 
+    public List<Student> listAll() { return studentRepository.findAll(); };
+
     public Student findByIdOrThrowBadRequestException(long id) {
        return studentRepository.findById(id)
                .orElseThrow(() -> new BadRequestException("Student not found!"));

@@ -39,10 +39,10 @@ public class Student {
     @NotEmpty(message = "The student email cannot be empty")
     private String email;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "tbl_id", nullable = true)
-    private User user;
+//    @OneToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "user_id", referencedColumnName = "tbl_id", nullable = true)
+//    private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Address> address = new ArrayList<>();
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Address> address = new ArrayList<>();
 }

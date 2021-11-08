@@ -13,41 +13,40 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "tbl_id")
-    private Integer id;
+    private Long id;
 
-    @Column(name = "tbl_user", length = 35, nullable = false)
-    private String user;
+    @Column(name = "tbl_username", length = 35, nullable = false)
+    private String username;
 
     @Column(name = "tbl_password", length = 35, nullable = false)
     private String password;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "tbl_id_student", referencedColumnName = "tbl_id_student", nullable = true)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "tbl_id_student")
     private Student student;
 
-    public User( String user, String password){
+    public User(){}
 
-    }
-
-    public User(Integer id, String user, String password, Student student) {
-        this.user = user;
+    public User(Long id, String username, String password, Student student) {
+        this.username = username;
         this.password = password;
+        this.student = student;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -70,7 +69,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", user='" + user + '\'' +
+                ", user='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", student=" + student +
                 '}';
