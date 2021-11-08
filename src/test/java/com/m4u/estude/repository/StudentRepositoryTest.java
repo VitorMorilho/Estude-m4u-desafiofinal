@@ -44,6 +44,19 @@ class StudentRepositoryTest {
                 .contains(studentSaved);
     }
 
+    @Test
+    @DisplayName("Save updates student when successful")
+    void save_UpdateStudent_WhenSuccessful() {
+        Student student = StudentCreator.createStudent();
+        Student studentSaved = this.studentRepository.save(student);
+
+        studentSaved.setName("Joaninha");
+        Student studentUpdated = this.studentRepository.save(studentSaved);
+
+        Assertions.assertThat(studentUpdated.getId()).isEqualTo(studentSaved.getId());
+        Assertions.assertThat(studentUpdated.getName()).isEqualTo(studentSaved.getName());
+    }
+
 //    @Test
 //    @DisplayName("Save throw ConstraintViolationException when name is empty")
 //    void save_throwConstraintViolationException_WhenNameIsEmpty(){

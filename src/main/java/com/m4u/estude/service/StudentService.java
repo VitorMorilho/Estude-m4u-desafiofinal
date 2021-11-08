@@ -1,6 +1,7 @@
 package com.m4u.estude.service;
 
 import com.m4u.estude.dto.student.StudentPostRequestBody;
+import com.m4u.estude.dto.student.StudentPutRequestBody;
 import com.m4u.estude.exception.badRequest.BadRequestException;
 import com.m4u.estude.model.Student;
 import com.m4u.estude.repository.StudentRepository;
@@ -39,6 +40,19 @@ public class StudentService {
 
     public List<Student> findByName(String name) {
         return studentRepository.findByName(name);
+    }
+
+    public void update(StudentPutRequestBody studentPutRequestBody) {
+        Student savedStudent = findByIdOrThrowBadRequestException(studentPutRequestBody.getId());
+
+        Student student = Student.builder()
+                .id(savedStudent.getId())
+                .name(studentPutRequestBody.getName())
+                .email(studentPutRequestBody.getEmail())
+                .age(studentPutRequestBody.getAge())
+                .build();
+
+        studentRepository.save(student);
     }
 }
 

@@ -1,10 +1,12 @@
 package com.m4u.estude.controller;
 
 import com.m4u.estude.dto.student.StudentPostRequestBody;
+import com.m4u.estude.dto.student.StudentPutRequestBody;
 import com.m4u.estude.model.Student;
 import com.m4u.estude.service.StudentService;
 import com.m4u.estude.util.StudentCreator;
 import com.m4u.estude.util.StudentPostRequestBodyCreator;
+import com.m4u.estude.util.StudentPutRequestBodyCreator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +18,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
@@ -42,6 +46,8 @@ class StudentControllerTest {
 
         BDDMockito.when(studentServiceMock.findByName(ArgumentMatchers.anyString()))
                 .thenReturn(List.of(StudentCreator.createStudent()));
+
+        BDDMockito.doNothing().when(studentServiceMock).update(ArgumentMatchers.any(StudentPutRequestBody.class));
     }
 
     @Test
@@ -87,5 +93,17 @@ class StudentControllerTest {
 
         Assertions.assertThat(students).isNotEmpty().hasSize(1);
         Assertions.assertThat(students.get(0).getName()).isEqualTo(expectedName);
+    }
+
+    @Test
+    @DisplayName("update student when successful")
+    void updateStudent_WhenSuccessful() {
+        Assertions.assertThatCode(() -> studentController.update(StudentPutRequestBodyCreator.createStudentPutRequestBody()))
+                .doesNotThrowAnyException();
+
+        ResponseEntity<Void> entity = studentController.update(StudentPutRequestBodyCreator.createStudentPutRequestBody());
+
+        Assertions.assertThat(entity).isNotNull();
+        Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
 }

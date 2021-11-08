@@ -18,4 +18,13 @@ public class StudentCreator {
                 .age(age)
                 .build();
     }
+
+    public static Student createValidUpdateStudent() {
+        return Student.builder()
+                .id(1L)
+                .name("Joaninha")
+                .email("joani@email.com")
+                .age(19)
+                .build();
+    }
 }

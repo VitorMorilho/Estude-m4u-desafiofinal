@@ -4,6 +4,7 @@ import com.m4u.estude.model.Student;
 import com.m4u.estude.repository.StudentRepository;
 import com.m4u.estude.util.StudentCreator;
 import com.m4u.estude.util.StudentPostRequestBodyCreator;
+import com.m4u.estude.util.StudentPutRequestBodyCreator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -100,5 +101,12 @@ class StudentServiceTest {
         List<Student> students = studentService.findByName("");
 
         Assertions.assertThat(students).isNotNull().isEmpty();
+    }
+
+    @Test
+    @DisplayName("update student when successful")
+    void updateStudent_WhenSuccessful() {
+        Assertions.assertThatCode(() -> studentService.update(StudentPutRequestBodyCreator.createStudentPutRequestBody()))
+                .doesNotThrowAnyException();
     }
 }

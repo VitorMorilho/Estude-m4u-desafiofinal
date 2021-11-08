@@ -1,6 +1,7 @@
 package com.m4u.estude.controller;
 
 import com.m4u.estude.dto.student.StudentPostRequestBody;
+import com.m4u.estude.dto.student.StudentPutRequestBody;
 import com.m4u.estude.model.Student;
 import com.m4u.estude.service.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +38,11 @@ public class StudentController {
     @GetMapping(path = "/find")
     public ResponseEntity<List<Student>> findByName(@RequestParam(required = false) String name) {
         return ResponseEntity.ok(studentService.findByName(name));
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> update(@RequestBody @Valid StudentPutRequestBody studentPutRequestBody) {
+        studentService.update(studentPutRequestBody);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
