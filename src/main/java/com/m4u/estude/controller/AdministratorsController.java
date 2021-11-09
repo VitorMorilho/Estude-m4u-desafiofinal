@@ -4,7 +4,6 @@ import com.m4u.estude.model.Address;
 import com.m4u.estude.model.Student;
 import com.m4u.estude.model.User;
 import com.m4u.estude.repository.StudentRepository;
-import com.m4u.estude.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +19,6 @@ public class AdministratorsController {
 
     @Autowired
     public StudentRepository repo;
-    @Autowired
-    public UserRepository userRepo;
 
     @GetMapping("/administrators")
     public String index(Model model){
@@ -38,8 +35,8 @@ public class AdministratorsController {
 
     //Salva os dados do formulário
     @PostMapping("/administrators/criar")
-    public String criar(User user ) {
-        userRepo.save(user);
+    public String criar(Student student) {
+        repo.save(student);
         return "redirect:/administrators"; //vai enviar para a lista
     }
 
