@@ -29,8 +29,8 @@
             <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="/">Home</a>
-                <a class="nav-link" href="/user">Log in</a>
-                <a class="nav-link" href="/student">Sign Up</a>
+                <a class="nav-link" href="/login">Log in</a>
+                <a class="nav-link" href="/administrators/signup">Sign Up</a>
                 <a class="nav-link active" href="/administrators">Manager</a>
               </div>
             </div>
@@ -40,11 +40,10 @@
       <!-- Container====================================================================================== -->
       <!-- Form Register new user -->
     <main>
-      <div class="container-md">
-        <div class="card">
-          <table class="table table-hover table-responsive-sm table-bordered caption-top">
+      <div class="container-md cont2">
+          <table class="table table-hover table-responsive-md table-bordered caption-top">
             <caption class="col-4">List of Students</caption>
-            <a href="student/index" type="button" class="btn btn-primary btn-sm new">New Student</a>
+            <a href="/administrators/signup" type="button" class="btn btn-primary btn-sm new">New Student</a>
             <thead>
               <tr>
                 <th scope="col">Id</th>
@@ -60,13 +59,11 @@
                 <td th:text="${student.name}"></td>
                 <td th:text="${student.email}"></td>
                 <td th:text="${student.age}"></td>
-                <td><button type="button" class="btn btn-primary btn-sm">Alter</button></td>
-                <td><button type="button" class="btn btn-danger btn-sm">Delete</button></td>
+                <td><a href="#" type="button" class="btn btn-primary btn-sm">Alter</a></td>
+                <td><a href="#" th:onclick="'if(confirm(\'Confirma ?\')) {window.location.href = \'' + @{/administrators/{id}(id=${student.id})} + '/excluir\'}'"  type="button" class="btn btn-danger btn-sm">Delete</a></td>
               </tr>
             </tbody>
           </table>
-        </div>
-
 
       </div>
     </main>

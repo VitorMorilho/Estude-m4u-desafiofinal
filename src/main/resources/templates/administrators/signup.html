@@ -29,8 +29,8 @@
             <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="/">Home</a>
-                <a class="nav-link" href="/user">Log in</a>
-                <a class="nav-link active" href="/student">Sign Up</a>
+                <a class="nav-link" href="/login">Log in</a>
+                <a class="nav-link active" href="/administrators/signup">Sign Up</a>
                 <a class="nav-link" href="/administrators">Manager</a>
               </div>
             </div>
@@ -45,7 +45,7 @@
           <div class="col">
             <div class="card h-100" id="card1" >
               <!-- FORM------------------------------->
-              <form class="row g-3" method="post" action="student/criar">
+              <form class="row g-3" method="post" action="/administrators/criar" onsubmit="return confirm('add new student?')">
                 <div class="col-md-7">
                   <label for="inputCourse" class="form-label">Course</label>
                   <input type="text" class="form-control" id="inputCourse">
@@ -54,44 +54,44 @@
                 <!-- Name and Age------------------------------->
                 <div class="col-md-9">
                   <label for="inputName" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="inputName" name="name">
+                  <input type="text" class="form-control" id="inputName" name="name" required>
                 </div>
                 <div class="col-md-3">
                   <label for="inputAge" class="form-label">Age</label>
-                  <input type="number" class="form-control" id="inputAge">
+                  <input type="number" class="form-control" id="inputAge" name="age" required>
                 </div>
                 <div class="col-md-9">
                   <label for="inputEmail" class="form-label">E-mail</label>
-                  <input type="text" class="form-control" name="email" id="inputEmail">
+                  <input type="text" class="form-control" name="email" id="inputEmail" required>
                 </div>
                 <!-- Address ---------------------------->
                 <div class="col-12">
                   <label for="inputStreet" class="form-label">Street</label>
-                  <input type="text" class="form-control" id="inputStreet">
+                  <input type="text" class="form-control" id="inputStreet" name="street" required>
                 </div>
                 <div class="col-md-6">
                   <label for="inputCity" class="form-label">City</label>
-                  <input type="text" class="form-control" id="inputCity">
+                  <input type="text" class="form-control" id="inputCity" name="city" required>
                 </div>
                 <div class="col-md-5">
                   <label for="inputState" class="form-label">State</label>
-                  <input type="text" class="form-control" id="inputState">
+                  <input type="text" class="form-control" id="inputState" name="state" required>
                 </div>
                 <div class="col-md-5">
                   <label for="inputCountry" class="form-label">Country</label>
-                  <input type="text" class="form-control" id="inputCountry">
+                  <input type="text" class="form-control" id="inputCountry" name="country" required>
                 </div>
                 <div class="col-md-4">
-                  <label for="inputZip" class="form-label">Zip code</label>
-                  <input type="number" class="form-control" id="inputZip">
+                  <label for="inputZip" class="form-label">Zip Code</label>
+                  <input type="number" class="form-control" id="inputZip" name="zipCode" required>
                 </div>
                 <div class="col-md-6">
                     <label for="inputUser" class="form-label">User Name</label>
-                    <input type="text" class="form-control" id="inputUser">
+                    <input type="text" class="form-control" id="inputUser" name="username" required>
                 </div>
                 <div class="col-md-4">
                   <label for="inputPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="inputPassword">
+                  <input type="password" class="form-control" id="inputPassword" name="password" required>
                   <script>function mostrarOcultarSenha(){
                     var senha=document.getElementById("inputPassword");
                     if(senha.type=="password"){
