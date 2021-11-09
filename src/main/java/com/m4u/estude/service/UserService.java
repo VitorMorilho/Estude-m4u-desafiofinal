@@ -1,50 +1,51 @@
 package com.m4u.estude.service;
 
-import com.m4u.estude.dto.UserDTO;
+import com.m4u.estude.dto.user.UserPostRequestBody;
+import com.m4u.estude.dto.user.UserPutRequestBody;
+import com.m4u.estude.exception.badRequest.BadRequestException;
 import com.m4u.estude.model.User;
 import com.m4u.estude.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
 
+    public User save(User user) {
+//        User user = User.builder()
+//                .username(userDTO.getUsername())
+//                .password(userDTO.getPassword())
+//                .student(userDTO.getStudent())
+//                .build();
+        return userRepository.save(user);
+    }
 
-    public User save(UserDTO userDTO) {
+    public User findByIdOrThrowBadRequestException(long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new BadRequestException("Users not found"));
+    }
+
+    public void delete(Long id){
+        userRepository.delete(findByIdOrThrowBadRequestException(id));
+    }
+
+    public User update(Long id, UserPutRequestBody userDto){
+        User userSaved = findByIdOrThrowBadRequestException(id);
+
         User user = User.builder()
-                .user(userDTO.getUser())
-                .password(userDTO.getPassword())
+                .id(userSaved.getId())
+                .username(userDto.getUsername())
+                .password(userDto.getPassword())
                 .build();
+
         return userRepository.save(user);
     }
 
-    public User findById(Integer id){
-
-
-        return userRepository.findById(id).stream()
-                .filter(user -> user.getId().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Users not found"));
-    }
-
-    public void delete(Integer id){
-        userRepository.delete(findById(id));
-    }
-
-    public User update(Integer id, User user){
-        if (! userRepository.existsById(id)){
-            return findById(id);
-        }
-        user.setId(id);
-        return userRepository.save(user);
+    public List<User> listAll() {
+        return userRepository.findAll();
     }
 }
-
-//    public User store(User user){
-//        return userRepository.save(user);
-//    }

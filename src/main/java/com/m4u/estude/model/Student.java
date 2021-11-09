@@ -11,8 +11,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
 
 @Entity
 @Data
@@ -39,10 +37,12 @@ public class Student {
     @NotEmpty(message = "The student email cannot be empty")
     private String email;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "tbl_id", nullable = true)
-    private User user;
+//    @OneToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "user_id", referencedColumnName = "tbl_id", nullable = true)
+//    private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "address_id", referencedColumnName = "tbl_id_address", nullable = true)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Address> address = new ArrayList<>();
 }
