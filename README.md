@@ -1,7 +1,7 @@
 <h1 style = "text-align: center;"> Desafio final Gama Academy, M4u </h1>
 
 <img src="https://res.cloudinary.com/walljobs/image/upload/v1575401331/kzv4wwbbh6sai7cwqyu8.jpg" 
-     alt="GamaAcademy" width="150" heigth="150" />
+     alt="GamaAcademy" width="250" heigth="250" style="margin-left: 50%;"/>
 
 #   Projeto Estude M4U
 ##   Turma 1- Grupo 5
