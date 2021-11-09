@@ -29,8 +29,13 @@
     * Maven
     * MySQL (versão 8)
     * Tymeleaf
+    * Lombok
+    * Spring Data Jpa
 
 ### Para o Front-end
     * Bootstrap
     * Html
     * Css
+
+### Docker
+Use o comando `docker-compose up` na pasta do projeto. Para instalar o banco de dados MySQL.
