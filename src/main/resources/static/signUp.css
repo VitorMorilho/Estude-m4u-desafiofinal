@@ -1,0 +1,88 @@
+/* FONTES====================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+/* NAVBAR======================================================= */
+body{
+    background-color: #f8f9fa !important;
+}
+.navbar {
+    background-color: #0A2B5E !important;
+}
+
+.navbar-text{
+    color: #F3F804 !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.nav-link{
+    color: white !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    margin-right: 20px !important;
+}
+
+.nav-link:hover{
+    color: rgb(4, 37, 46) !important;
+    background-color: #168c90;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    margin-right: 20px !important;
+    border-bottom: 2px solid #ffff;
+    font-weight: bold !important;
+}
+
+.active{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    margin-right: 20px !important;
+    border-bottom: 2px solid #ffff;
+    opacity: 75%;
+}
+
+/* Container ============================================================== */
+.container-md{
+    max-width: 600px !important;
+    padding: 3px;
+}
+/* Card1 ============================================================== */
+.card{
+    max-width: 1200px;
+    margin-top: 30px;
+    padding: 10px 20px 10px 20px;
+    border: 1px solid #E1D4D4;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
+    border-radius: 8px;
+}
+
+.btn{
+    border: none !important;
+    width: 120px;
+    margin: 30px 0px 30px 50% !important;
+    transform: translate(-50%);
+    background-color: #23ce4d !important;
+    color: black !important;
+    font-weight: bold !important;
+}
+
+.btn:hover{
+    width: 120px;
+    margin: 30px 0px 30px 50% !important;
+    transform: translate(-50%);
+    background-color: #067e24 !important;
+    color: #ffff !important;
+    font-weight: bold !important;
+}
+
+footer .nav-bar{
+    background-color: #0A2B5E !important;
+    height: 10px !important;
+}
+
+span{
+    font-size: 10px;
+    color: #ffff;
+}
+

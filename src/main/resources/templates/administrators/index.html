@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study</title>
+    <link rel="shortcut icon" href="icons/favicon-32x32.png" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="manager.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <!-- NAVBAR=================================================================================================== -->
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark">
+          <div class="container">
+            <a class="navbar-brand" href="#"><img src="assets/logophotoshop.png" width="100" alt="Logo Study" ></a>
+            <span class="navbar-text">
+              Your online course platform
+            </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+                <a class="nav-link" href="/user">Log in</a>
+                <a class="nav-link" href="/student">Sign Up</a>
+                <a class="nav-link active" href="/administrators">Manager</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+    </header>
+      <!-- Container====================================================================================== -->
+      <!-- Form Register new user -->
+    <main>
+      <div class="container-md">
+        <div class="card">
+          <table class="table table-hover table-responsive-sm table-bordered caption-top">
+            <caption class="col-4">List of Students</caption>
+            <button type="button" class="btn btn-primary btn-sm new">New Student</button>
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Age</th>
+                <th colspan="2">More info</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="student : ${students}">
+                <th th:text="${student.id}"></th>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.email}"></td>
+                <td th:text="${student.age}"></td>
+                <td><button type="button" class="btn btn-primary btn-sm">Alter</button></td>
+                <td><button type="button" class="btn btn-danger btn-sm">Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+    </main>
+    <footer>
+      <nav class="navbar fixed-bottom navbar-dark">
+        <div class="container-fluid justify-content-center">
+          <span>&copy;developed by group 5</span>
+        </div>
+      </nav>
+    </footer>
+  </body>
+</html>

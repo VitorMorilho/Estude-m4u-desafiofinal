@@ -1,0 +1,97 @@
+/* FONTES====================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+/* NAVBAR======================================================= */
+body{
+    background-color: #f8f9fa !important;
+}
+
+.navbar {
+    background-color: #0A2B5E !important;
+}
+
+.navbar-text{
+    color: #F3F804 !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.nav-link{
+    color: white !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    margin-right: 20px !important;
+    
+}
+
+.nav-link:hover{
+    color: rgb(4, 37, 46) !important;
+    background-color: #0db3b9;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    margin-right: 20px !important;
+    border-bottom: 2px solid #ffff;
+    font-weight: bold !important;
+}
+
+.active{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    margin-right: 20px !important;
+    border-bottom: 2px solid #ffff;
+    font-weight: bold !important;
+    opacity: 75%;
+}
+
+/* Container ============================================================== */
+.card{
+    max-width: 900px;
+    height: 500px !important;
+    margin-top: 30px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    padding: 10px;
+    border: 1px solid #E1D4D4;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
+    border-radius: 8px;
+    align-items: center;
+}
+
+h2{
+    margin-top: 20px !important;
+    margin-bottom: 30px !important;
+    font-weight: bold;
+    text-align: center;
+}
+p{
+    margin: 10px;
+    text-align: justify;
+    text-indent: 50px;
+}
+
+#componentes p{
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#componentes {
+    margin-top: 30px;
+}
+
+#componentes a{
+    text-decoration: none;
+    text-align: justify;
+}
+
+footer .nav-bar{
+    background-color: #0A2B5E !important;
+    height: 10px !important;
+}
+
+span{
+    font-size: 10px;
+    color: #ffff;
+}
