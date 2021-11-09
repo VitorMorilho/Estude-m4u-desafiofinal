@@ -22,4 +22,9 @@ public class AdministratorsController {
         model.addAttribute("students", students);
         return "administrators/index";
     }
+
+    @GetMapping("student/index")
+    public String novo(){
+        return "student/index";
+    }
 }
