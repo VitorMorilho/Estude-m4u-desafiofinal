@@ -1,0 +1,109 @@
+/* FONTES====================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css");
+
+/* NAVBAR======================================================= */
+body{
+    background-color: #f8f9fa!important;
+}
+.navbar {
+    background-color: #0A2B5E !important;
+
+}
+
+.navbar-text{
+    color: #F3F804 !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.nav-link{
+    color: white !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    margin-right: 20px !important;
+}
+
+.nav-link:hover{
+    color: rgb(4, 37, 46) !important;
+    background-color: #0db3b9;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    margin-right: 20px !important;
+    border-bottom: 2px solid #ffff;
+    font-weight: bold !important;
+}
+
+.active{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    margin-right: 20px !important;
+    border-bottom: 2px solid #ffff;
+    font-weight: bold !important;
+    opacity: 75%;
+}
+
+/* Login User ============================================================== */
+
+.card{
+    max-width: 400px;
+    margin-top: 30px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    padding: 10px;
+    border: 1px solid #E1D4D4;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
+    border-radius: 8px;
+    position: fixed;
+}
+
+h2{
+    margin-left: 40%;
+    padding: 15px;
+}
+
+label{
+    padding-top: 10px;
+}
+
+input[id=userName] {
+    background-image: url(icons/person.svg);
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    padding-left: 40px;
+  }
+
+  input[id=password] {
+    background-image: url(icons/key.svg);
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    padding-left: 40px;
+  }
+
+.reset{
+    margin-top: -10px;
+    margin-left: 70%;
+    position: relative;
+}
+
+#divButtons{
+    margin-top: 20px;
+    padding: 0 50px;
+    margin-right: -70px !important;
+}
+
+.btn{
+    width: 110px;
+}
+
+footer .nav-bar{
+    background-color: #0A2B5E !important;
+    height: 10px !important;
+}
+
+span{
+    font-size: 10px;
+    color: #ffff;
+}

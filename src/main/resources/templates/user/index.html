@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study</title>
+    <link rel="shortcut icon" href="icons/favicon-32x32.png" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="login.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#"><img src="assets/logophotoshop.png" width="100" alt="Logo Study" ></a>
+          <span class="navbar-text">
+            Your online course platform
+          </span>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" href="/user">Log in</a>
+              <a class="nav-link" href="/student">Sign Up</a>
+              <a class="nav-link" href="/administrator">Manager</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+  </header>
+      <!-- CONTAINER--------------------------------------------------------------------------------- -->
+      <main>
+        <div class="container">
+          <div class="card h-100" id="card2">
+            <form>
+              <div class="form-group">
+                <h2>Login</h2>
+                <label for="userName">User Name</label>
+                <input type="text" id="userName" name="user_name" class="form-control">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control">
+                <script>function mostrarOcultarSenha(){
+                  var senha=document.getElementById("inputPassword");
+                  if(senha.type=="password"){
+                    senha.type=="text"
+                  }else{
+                    senha.type=="text"
+                  }
+                }
+                </script>
+                <label for="reset" class="reset"><a href="#">Reset password</a></label>
+                <div class="row" id="divButtons">
+                  <div class="col" id="buttonCancel">
+                    <button type="button" class="btn btn-outline-danger">CANCEL</button>
+                  </div>
+                  <div class="col">
+                    <button type="submit" class="btn btn-success">ENTER</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <nav class="navbar fixed-bottom navbar-dark">
+          <div class="container-fluid justify-content-center">
+            <span>&copy;developed by group 5</span>
+          </div>
+        </nav>
+      </footer>
+</body>
+</html>
