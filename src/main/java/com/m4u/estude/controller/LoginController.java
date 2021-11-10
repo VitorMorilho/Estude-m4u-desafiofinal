@@ -21,12 +21,7 @@ public class LoginController {
     }
 
     @PostMapping("/logar")
-    public String logar(Model model, User userParam){
-        User userAdm = this.repository.Login(userParam.getUsername(), userParam.getPassword());
-        if (userAdm != null){
-            return "redirect:/administrators";
-        }
-        model.addAttribute("Erro", "User invalid");
-        return "login/index";
+    public String logar(){
+        return "redirect:administrators/index";
     }
 }
